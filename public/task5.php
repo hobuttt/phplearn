@@ -9,6 +9,13 @@
     $pointNCity2 = $city2 + $city1Radius;
     for ($i = 0; $i < 10; $i++) {
         $car = rand(0, 100);
-        $speed = ($car >= $pointSCity1 && $car <= $pointNCity1) || ($car >= $pointSCity2 && $car <= $pointNCity2) ? 70 : 90;
-        echo "Машина 4 едет по городу на $car км со скоростью $speed <br />";
+        $speed =
+            ($car >= $pointSCity1 && $car <= $pointNCity1) || ($car >= $pointSCity2 && $car <= $pointNCity2) ? 70 : 90;
+        switch($speed) {
+            case 70:
+                echo "Машина 4 едет по городу на $car км со скоростью $speed <br />";
+            break;
+            case 90:
+                echo "Машина 4 едет по трассе на $car км со скоростью $speed <br />";
+        }
     }

@@ -6,21 +6,25 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Заголовок</title>
+        <title><?= $title; ?></title>
         <style type="text/css">.red {color: red;}</style>
     </head>
     <body>
-        <h1 class="<?php if ($red === true) {echo 'red';} ?>"><?= $title; ?></h1>
+        <h1 class="<?php echo $red ? 'red' : false ?>"><?= $title; ?></h1>
         <div>Авторов на портале <?= count($authors); ?></div>
         <!-- Выведите все книги -->
-         <?php
-             for($i = 0; $i < count($books); $i++) {
-                 $book = $books[$i]['title'];
-                 $email = $books[$i]['authorEmail'];
-                 $fullName = $authors[$email]['fio'];
-                 $birth = $authors[$email]['birthDate'];
-                 echo "<p>Книга $book, ее написал $fullName $birth ($email)</p>";
-             }
-         ?>
+
+        <?php foreach($books as $book):
+              $author = $authors[$book['authorEmail']];
+        ?>
+
+          <p>
+            Книга <?php echo $book['title']?>,
+            ее написал <?php echo $author['fio'] ?>
+            <?php echo $author['birthDate'] ?>
+            (<?php echo $book['authorEmail']?>)
+          </p>
+
+        <?php endforeach ?>
     </body>
 </html>
