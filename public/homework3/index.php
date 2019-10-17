@@ -1,20 +1,24 @@
 <?php
-    include  './auth.php';
-    $error = false;
-    $success = false;
 
-    var_dump($_POST);
-    if (!empty($_POST)) {
-        if (empty($_POST['login']) || empty($_POST['password'])) {
-            $error = true;
-        }else{
-            $success = auth($_POST['login'], $_POST['password']);
-        }
-    }
+require  './auth.php';
+
+$error = false;
+$success = false;
+$login = $_POST['login'] ?? '';
+$password = $_POST['password'] ?? '';
+
+if (auth($login, $password)) {
+    setcookie('login', $login, 0, '/');
+    setcookie('password', $password, 0, '/');
+//    header('Location: /index.php');
+    $success = true;
+} else {
+    $error = true;
+}
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="styles.css" rel="stylesheet">
