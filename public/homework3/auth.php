@@ -7,3 +7,14 @@ function auth(string $getLogin, string $getPassword) {
         }
     }
 }
+
+function getUserLogin(): ?string {
+    $loginFromCookie = $_COOKIE['login'] ?? '';
+    $passwordFromCookie = $_COOKIE['password'] ?? '';
+
+    if (auth($loginFromCookie, $passwordFromCookie)) {
+        return $loginFromCookie;
+    }
+
+    return null;
+}
