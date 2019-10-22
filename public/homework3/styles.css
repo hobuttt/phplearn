@@ -136,7 +136,7 @@ a:hover {
     margin: 0 0 10px 0;
     padding: 0 10px 0 0;
 }
-    
+
 .project-folders-v {
     margin: 0;
     padding: 0;
@@ -192,4 +192,12 @@ a:hover {
 
 .iat label {
 	display: block;
+}
+.error {
+    background-color: red;
+    padding: 10px;
+}
+.success {
+    background-color: greenyellow;
+    padding: 10px;
 }
